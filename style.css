@@ -1,0 +1,28 @@
+@import url(http://fonts.googleapis.com/css?family=Bevan);
+
+body {
+  background: black;
+  overflow: hidden;
+
+}
+img {
+  position: absolute;
+  left: 50%;
+  margin-left: -125px;
+  /* Check out http://easings.net/ for more info on this!*/
+  -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+div.clock {
+  width: 250px;
+  height: 250px;
+  border-radius:100%;
+  border: deeppink 5px solid;
+  margin:8% auto;
+}
+.title {
+  font-family: Bevan;
+  font-size: 100px;
+  degreetext-align: center;
+  color: cornflowerblue;
+}
