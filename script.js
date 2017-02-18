@@ -1,6 +1,39 @@
-
 var setHour = false;
 var setMinute = false;
+
+var date = new Date();
+var dateVal = date.getDate();
+var setDate = false;
+
+$('#date').text(dateVal);
+
+var year = new Date().getFullYear();
+var month = new Date().getMonth() + 1;
+var daysInMonth = new Date(year, month, 0).getDate();
+
+$('#date').on('click', function(event){
+    if (setDate == false) {
+        setDate = true
+    } else {
+        setDate = false;
+    }
+});
+
+$('#date').on('wheel', function(event){
+    if (setDate) {
+      if (event.originalEvent.deltaY < 0) {
+        if (dateVal < daysInMonth) {
+            dateVal += 1;
+            $('#date').text(dateVal);         
+        }
+      } else {
+        if (dateVal > 0) {
+            dateVal -= 1;
+            $('#date').text(dateVal);      
+        }
+      }
+    }
+});
 
 
 $('.clock').on('click', function(event){
@@ -46,8 +79,6 @@ $('.clock').on('wheel', function(event){
         minuteHand.css('transform', 'rotate('+minuteDegree+'deg)');         
       }
     }
-
-
 });
 
 var clock = function(){
@@ -65,17 +96,9 @@ var clock = function(){
         hourDegree+=1;
         hourHand.css('transform', 'rotate('+hourDegree+'deg)');         
     }, 3600000/30);
-
 };
 
 
 
 
 
-
-// set clock
-// click clock once - set hour value = true
-// set hour
-// click clock a second time - set hour value = false, set minute value = true
-// set minute
-// click clock a third time - set minute value = false
